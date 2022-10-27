@@ -1,0 +1,58 @@
+################################################################################
+# @file   install-sh
+# @author dunrong <riegamaths@gmail.com>
+# @date   2022年 10月 22日
+
+# @brief  Install script for this app
+################################################################################
+
+TOP_PATH=$PWD
+CONFIG_FILE=$TOP_PATH/emacs.conf
+MY_LISP_PATH=$TOP_PATH/my-lisp
+
+TARGET_CONFIG_FILE=$HOME/.emacs
+TARGET_CONFIG_PATH=$HOME/.emacs.d
+TARGET_SITE_LISP_PATH=$TARGET_CONFIG_PATH/site-lisp
+TARGET_MY_LISP_PATH=$TARGET_CONFIG_PATH/my-lisp
+TARGET_COMMON_PATH=$TARGET_CONFIG_PATH/my-lisp
+TARGET_APP_PATH=$TARGET_CONFIG_PATH/app
+TARGET_TEMPORARY_PATH=$TARGET_CONFIG_PATH/temporary
+
+init()
+{
+    # Back up the old emacs config directory if have. Create directory we need
+    if [ -d $TARGET_CONFIG_PATH ]; then
+        echo "Back up $TARGET_CONFIG_PATH ......"
+        rm -rf $TARGET_CONFIG_PATH-bakup
+        cp -r $TARGET_CONFIG_PATH $TARGET_CONFIG_PATH-bakup
+    fi
+    mkdir -p $TARGET_SITE_LISP_PATH
+    mkdir -p $TARGET_MY_LISP_PATH
+    mkdir -p $TARGET_COMMON_PATH
+    mkdir -p $TARGET_APP_PATH
+    mkdir -p $TARGET_TEMPORARY_PATH
+}
+
+deploy_config()
+{
+    # Copy the .emacs initial file to install directory, if there is a .emacs
+    # already, back up the old .emacs
+    if [ -f $TARGET_CONFIG_FILE ]; then
+        echo "Back up $TARGET_CONFIG_FILE ......"
+        mv $TARGET_CONFIG_FILE $TARGET_CONFIG_FILE-bakup
+    fi
+    cp $CONFIG_FILE $TARGET_CONFIG_FILE
+}
+
+deploy_dotconfig()
+{
+    echo "Copy all my files to config directory ......"
+    cp -r $MY_LISP_PATH/*.el $TARGET_MY_LISP_PATH
+}
+
+################################# main function ###############################
+init
+deploy_config
+deploy_dotconfig
+
+echo "Done, enjoy it ......"

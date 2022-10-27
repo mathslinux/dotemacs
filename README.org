@@ -1,0 +1,9 @@
+* 基本安装
+适用于没有安装任何 emacs 扩展的情况，直接在终端执行
+#+begin_src bash
+$ ./install-sh
+#+end_src
+
+基本安装完成之后，可以按以下说明执行其他高级配置。
+
+* yasnippet 配置
