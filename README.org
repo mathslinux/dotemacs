@@ -6,4 +6,19 @@ $ ./install-sh
 
 基本安装完成之后，可以按以下说明执行其他高级配置。
 
+* 启用 el-get
+#+begin_src bash
+$ cd ~/.emacs.d/my-lisp
+$ mv K102-el-get.el S102-el-get.el
+#+end_src
+
 * yasnippet 配置
+1. 启用 el-get 配置，安装 =yasnippet-snippets=
+2. 开启 yasnippet 配置
+
+#+begin_src
+$ cd ~/.emacs.d/my-lisp
+$ mv K102-el-get.el S102-el-get.el
+#+end_src
+
+其他更多信息参考 [[https://github.com/joaotavora/yasnippet][官网]]
