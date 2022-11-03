@@ -9,12 +9,13 @@
 TOP_PATH=$PWD
 CONFIG_FILE=$TOP_PATH/emacs.conf
 MY_LISP_PATH=$TOP_PATH/my-lisp
+COMMON_PATH=$TOP_PATH/common
 
 TARGET_CONFIG_FILE=$HOME/.emacs
 TARGET_CONFIG_PATH=$HOME/.emacs.d
 TARGET_SITE_LISP_PATH=$TARGET_CONFIG_PATH/site-lisp
 TARGET_MY_LISP_PATH=$TARGET_CONFIG_PATH/my-lisp
-TARGET_COMMON_PATH=$TARGET_CONFIG_PATH/my-lisp
+TARGET_COMMON_PATH=$TARGET_CONFIG_PATH/common
 TARGET_APP_PATH=$TARGET_CONFIG_PATH/app
 TARGET_TEMPORARY_PATH=$TARGET_CONFIG_PATH/temporary
 
@@ -47,7 +48,8 @@ deploy_config()
 deploy_dotconfig()
 {
     echo "Copy all my files to config directory ......"
-    cp -r $MY_LISP_PATH/*.el $TARGET_MY_LISP_PATH
+    cp -f $MY_LISP_PATH/*.el $TARGET_MY_LISP_PATH
+    cp -f $COMMON/*.el $TARGET_COMMON_PATH
 }
 
 ################################# main function ###############################

@@ -2,6 +2,11 @@
 ;; el-get config: from https://github.com/dimitri/el-get
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; 注意由于github访问比较慢的原因，如果需要同步另一台机器上已经安装好的 el-get
+;; 包，除了将 ~/.emacs.d/el-get 下相应的目录拷贝之外，还需要同步
+;; ~/.emacs.d/el-get/.loaddefs.el ~/.emacs.d/el-get/.status.el 这两个文件，
+;; 记得先删除相应的 .elc 文件
+
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil 'noerror)
