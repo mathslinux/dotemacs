@@ -48,8 +48,8 @@ deploy_config()
 deploy_dotconfig()
 {
     echo "Copy all my files to config directory ......"
-    cp -f $MY_LISP_PATH/*.el $TARGET_MY_LISP_PATH
-    cp -f $COMMON/*.el $TARGET_COMMON_PATH
+    cp -vf $MY_LISP_PATH/*.el $TARGET_MY_LISP_PATH
+    cp -vf $COMMON_PATH/*.el $TARGET_COMMON_PATH
 }
 
 ################################# main function ###############################

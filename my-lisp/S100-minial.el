@@ -13,7 +13,9 @@
 ;;(global-linum-mode t)			; show line number
 
 ;; Hide tool bar
-(tool-bar-mode -1)
+(if (display-graphic-p)
+    (progn
+      (tool-bar-mode -1))
 
 ;; Hide menu bar
 (menu-bar-mode -1)
