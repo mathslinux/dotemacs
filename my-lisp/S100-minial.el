@@ -15,7 +15,9 @@
 ;; Hide tool bar
 (if (display-graphic-p)
     (progn
-      (tool-bar-mode -1))
+      (tool-bar-mode -1)
+      ;; Cancel the scroll
+      (set-scroll-bar-mode nil)))
 
 ;; Hide menu bar
 (menu-bar-mode -1)
@@ -25,9 +27,6 @@
 
 ;; Inhibits the startup screen
 (setq inhibit-startup-message t)
-
-;; Cancel the scroll
-(set-scroll-bar-mode nil)
 
 ;; Support full screen
 (defun toggle-fullscreen (&optional f)
