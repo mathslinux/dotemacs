@@ -18,7 +18,15 @@ $ mv K102-el-get.el S102-el-get.el
 
 #+begin_src
 $ cd ~/.emacs.d/my-lisp
-$ mv K102-el-get.el S102-el-get.el
+$ mv K104-yasnippet.el S104-yasnippet.el
 #+end_src
 
 其他更多信息参考 [[https://github.com/joaotavora/yasnippet][官网]]
+
+* neotree 配置
+1. 启用 el-get 配置，安装 =neotree=
+2. 开启 neotree 配置
+#+begin_src
+$ cd ~/.emacs.d/my-lisp
+$ mv K108-neotree.el S108-neotree.el
+#+end_src
