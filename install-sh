@@ -53,8 +53,19 @@ deploy_dotconfig()
 }
 
 ################################# main function ###############################
-init
+if [ "$1" = "first" ]; then
+    echo "first install"
+    init
+fi
+
+echo "update all config files "
 deploy_config
 deploy_dotconfig
+
+if [ "$1" = "all" ]; then
+    echo "enable all config"
+    cd ~/.emacs.d/my-lisp
+    rename -v "s/^K/S/" K*.el
+fi
 
 echo "Done, enjoy it ......"
