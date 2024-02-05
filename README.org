@@ -30,3 +30,33 @@ $ mv K104-yasnippet.el S104-yasnippet.el
 $ cd ~/.emacs.d/my-lisp
 $ mv K108-neotree.el S108-neotree.el
 #+end_src
+
+* vterm 配置
+1. 启用 el-get 配置，安装 =vterm=, 注意 emacs 必须支持模块，检查 =module-file-suffix= 变量是否为 nil。且安装了 cmake, libtool-bin。
+2. 将以下代码复制到 ~/.bashrc 中。
+#+begin_src bash
+vterm_printf() {
+    if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ]); then
+        # Tell tmux to pass the escape sequences through
+        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+    elif [ "${TERM%%-*}" = "screen" ]; then
+        # GNU screen (screen, screen-256color, screen-256color-bce)
+        printf "\eP\e]%s\007\e\\" "$1"
+    else
+        printf "\e]%s\e\\" "$1"
+    fi
+}
+
+vterm_prompt_end(){
+    vterm_printf "51;A$(whoami)@$(hostname):$(pwd)"
+}
+PS1=$PS1'\[$(vterm_prompt_end)\]'
+#+end_src
+
+* 启用全部插件
+1. 安装 cmake libtool libtool-bin rename
+2. 用 el-get 安装 =yasnippet-snippets=, =vterm=, =neotree=, =vterm=
+3. 启用所有配置
+#+begin_src bash
+$ rename -d "s/^K/S/" ~/.emacs.d/my-lisp/K*.el
+#+end_src
