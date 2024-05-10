@@ -178,9 +178,10 @@
 (define-key global-map (kbd "C-c y") 'copy-line)
 
 ;; undo, redo need other package
-(global-set-key (kbd "C-<") 'undo)
+;; C-. 在大多数终端下无效
+(global-set-key (kbd "C-;") 'undo)
 (global-set-key (kbd "C-,") 'undo)
-(global-set-key (kbd "C->") 'undo-redo)
+(global-set-key (kbd "C-'") 'undo-redo)
 (global-set-key (kbd "C-.") 'undo-redo)
 
 ;; close current buffer

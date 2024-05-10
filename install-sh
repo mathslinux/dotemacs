@@ -65,7 +65,19 @@ deploy_dotconfig
 if [ "$1" = "all" ]; then
     echo "enable all config"
     cd ~/.emacs.d/my-lisp
-    rename -v "s/^K/S/" K*.el
+
+    # Gentoo 系统和ubuntu系统的 perl-rename 名字不一样
+    ID=$(grep -oP '(?<=^ID=).*' /etc/os-release)
+    if [ "$ID" == "gentoo" ]; then
+        perl-rename -v "s/^K/S/" K*.el
+    else
+        if [ "$ID" == "ubuntu" ]; then
+            rename -v "s/^K/S/" K*.el
+        else
+            echo "Unsupported operating system."
+            exit 1
+        fi
+    fi
 fi
 
 echo "Done, enjoy it ......"
