@@ -1,18 +1,23 @@
 ;; Provided by Sebastian Urban
 ;; More information at https://idiocy.org/emacs-fonts-and-fontsets.html
 
-;; 在fonts.conf中默认已经设置中文是noto,等宽英文是 monaco,但是不知道为什么noto没有生效, 这里重新设置
-(set-fontset-font "fontset-default" 'han "Noto Sans Mono CJK SC" )
+;; 1. 设置默认字体使用 set-face-attribute。直接设置默认大小
+;; 2. 没有单独的英文 latin 字体设置，该字符集的设置就是默认字体
+;; 3. 设置其他字符集的方式为 (set-fontset-font "fontset-default" '字符集 "字体名字")，如果要设置大小，使用 (font-spec) 包装
+;; 4. cjk-misc 是中文的句号等字符
+;; 5. daemon 模式启动不会加载face相关设置，上述字体设置不生效，需要使用 after-make-frame-functions。
+;; 6. (display-graphic-p) 函数可用来判断是否在字符终端还是 UI 终端。
 
-;; 句号这些
-(set-fontset-font "fontset-default" 'cjk-misc "Noto Sans CJK SC")
+(defun config-fonts ()
+  (set-face-attribute 'default nil :font "Monaco-12")
+  (set-fontset-font "fontset-default" 'han (font-spec :family "Noto Sans CJK SC Medium" :size 20))
+  (set-fontset-font "fontset-default" 'cjk-misc (font-spec :family "Noto Sans CJK SC Medium" :size 20)))
 
 ;; daemon模式启动的时候,上面的设置不生效，这里判断每次创建新的frame的时候设置一下。
 (add-hook 'after-make-frame-functions
           (lambda (frame)
             (select-frame frame)
-            (set-fontset-font "fontset-default" 'han "Noto Sans Mono CJK SC")
-            (set-fontset-font "fontset-default" 'cjk-misc "Noto Sans CJK SC")))
+            (config-fonts)))
 
 ;; (set-fontset-font "fontset-default" 'adlam "Noto Sans Adlam")
 ;; (set-fontset-font "fontset-default" 'anatolian "Noto Sans Anatolian Hieroglyphs")

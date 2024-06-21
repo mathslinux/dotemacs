@@ -61,7 +61,7 @@ PS1=$PS1'\[$(vterm_prompt_end)\]'
 
 * 启用全部插件
 1. 安装 cmake libtool libtool-bin rename(perl 版本)
-2. 用 el-get 安装 =yasnippet-snippets, vterm, neotree, vterm, multiple-cursors=
+2. 用 el-get 安装 =yasnippet-snippets, vterm, neotree, multiple-cursors=
 3. 启用所有配置
 #+begin_src bash
 $ rename -d "s/^K/S/" ~/.emacs.d/my-lisp/K*.el
