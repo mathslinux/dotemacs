@@ -10,17 +10,17 @@
 ;; 在状态栏显示行号和列号
 (setq line-number-mode t)
 (setq column-number-mode t)		; has been openned
-;;(global-linum-mode t)			; show line number
+;; 在左侧显示行号, 注意从 29 版本开始 global-linum-mode 函数被舍弃。
+(global-display-line-numbers-mode t)
 
-;; Hide tool bar
-(if (display-graphic-p)
-    (progn
-      (tool-bar-mode -1)
-      ;; Cancel the scroll
-      (set-scroll-bar-mode nil)))
+;; 隐藏工具栏
+(tool-bar-mode -1)
 
-;; Hide menu bar
+;; 隐藏菜单栏
 (menu-bar-mode -1)
+
+;; 禁用滚动条
+(set-scroll-bar-mode nil)
 
 ;; Set window's title 
 (setq frame-title-format "emacs@%b")
@@ -210,3 +210,6 @@
         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
         (t (self-insert-command (or arg 1)))))
 (global-set-key "%" 'match-paren)
+
+;; ibuffer
+(global-set-key (kbd "C-x C-b") 'ibuffer)

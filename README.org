@@ -59,9 +59,12 @@ PS1=$PS1'\[$(vterm_prompt_end)\]'
 * 字体配置
 安装 monaco 和 noto 字体，然后 =mv K114-font.el S114-font.el=
 
+* 主题配置
+启用 el-get 配置，安装 =doom-themes=，然后 =mv S116-ui.el S116-ui.el=
+
 * 启用全部插件
 1. 安装 cmake libtool libtool-bin rename(perl 版本)
-2. 用 el-get 安装 =yasnippet-snippets, vterm, neotree, multiple-cursors=
+2. 用 el-get 安装 =yasnippet-snippets, vterm, neotree, multiple-cursors,doom-theme=
 3. 启用所有配置
 #+begin_src bash
 $ rename -d "s/^K/S/" ~/.emacs.d/my-lisp/K*.el
