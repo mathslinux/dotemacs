@@ -220,4 +220,5 @@
 ;; 另外 emacs 内置 fixup-whitespace, cycle-spacing, delete-horizontal-space, just-one-space 等
 ;; 为了方便，使用直接绑定到 backspace 上封装好的库
 ;; 使用的版本为 d919e55
+(require 'hungry-delete)
 (global-hungry-delete-mode)

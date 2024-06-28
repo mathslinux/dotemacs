@@ -72,7 +72,7 @@ if [ "$1" = "all" ]; then
         perl-rename -v "s/^K/S/" K*.el
     else
         if [ "$ID" == "ubuntu" ]; then
-            rename -v "s/^K/S/" K*.el
+            rename -f -v "s/^K/S/" K*.el
         else
             echo "Unsupported operating system."
             exit 1
