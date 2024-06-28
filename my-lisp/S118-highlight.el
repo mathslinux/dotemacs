@@ -17,3 +17,7 @@
 (global-set-key [(control shift f5)] 'highlight-symbol-remove-all)
 ;; 替换操作
 (global-set-key [(meta f5)] 'highlight-symbol-query-replace)
+
+;; 类似 vscode 高亮所有光标处的单词
+(require 'highlight-thing)
+(global-highlight-thing-mode)
