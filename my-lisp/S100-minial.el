@@ -213,3 +213,11 @@
 
 ;; ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+
+;; hungruy 模式设置
+;; emacs 默认在 cc 模式下对hungry支持得比较好，但是其他模式无法使用。
+;; 另外 emacs 内置 fixup-whitespace, cycle-spacing, delete-horizontal-space, just-one-space 等
+;; 为了方便，使用直接绑定到 backspace 上封装好的库
+;; 使用的版本为 d919e55
+(global-hungry-delete-mode)
