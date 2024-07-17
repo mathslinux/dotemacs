@@ -222,3 +222,9 @@
 ;; 使用的版本为 d919e55
 (require 'hungry-delete)
 (global-hungry-delete-mode)
+
+;; 窗口frame保存和还原设置
+(global-set-key (kbd "C-<f7>")
+                (lambda () (interactive) (window-configuration-to-register ?1)))
+(global-set-key (kbd "<f7>")
+                (lambda () (interactive) (jump-to-register ?1)))
