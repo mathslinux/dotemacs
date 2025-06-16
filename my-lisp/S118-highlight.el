@@ -20,5 +20,5 @@
 
 ;; 类似 vscode 高亮所有光标处的单词
 (require 'highlight-thing)
-;; 不作为默认值打开，按需打开
-;; (global-highlight-thing-mode)
+;; 不作为默认值打开，按需打开, 似乎有bug,只能从custom那里生效
+(global-highlight-thing-mode -1)
